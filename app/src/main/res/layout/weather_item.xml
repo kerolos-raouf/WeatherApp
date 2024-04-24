@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+        <variable
+            name="item"
+            type="com.example.weatherapp.data.models.WeatherItem" />
+
+        <variable
+            name="listener"
+            type="com.example.weatherapp.ui.ItemInteractionListener" />
+    </data>
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/weatherItem"
+        android:layout_width="100dp"
+        android:layout_height="150dp"
+        android:elevation="@dimen/defaultElevationValue"
+        app:cardCornerRadius="@dimen/defaultElevationValue"
+        android:backgroundTint="@color/cardBackgroundColor"
+        android:layout_margin="@dimen/defaultMarginValue"
+        android:onClick="@{()->listener.onItemClicked(item)}"
+        >
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+
+            >
+            <TextView
+                android:id="@+id/itemTime"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:text="@{item.time}"
+                android:textColor="@color/textColorGray"
+                android:textSize="20sp"
+                android:layout_margin="10dp"
+                />
+
+            <ImageView
+                android:id="@+id/itemImage"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                setIcon="@{item.weatherCode}"
+                android:layout_gravity="center_horizontal"
+                />
+
+            <TextView
+                android:id="@+id/itemTemp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:text="@{item.temperature2m.toString()}"
+                android:textColor="@color/textColorGray"
+                android:textSize="20sp"
+                android:layout_margin="10dp"
+                android:textStyle="bold"
+                />
+        </LinearLayout>
+
+    </androidx.cardview.widget.CardView>
+</layout>
